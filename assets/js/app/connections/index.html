@@ -79,7 +79,8 @@
                     <a  edit-disabled="{{!user.hasPermission('connections','update')}}" editable-text="node.kong_admin_url" onbeforesave="updateNode(node)">{{node.kong_admin_url}}</a>
                 </td>
                 <td>
-                    <a  edit-disabled="{{!user.hasPermission('connections','update')}}" editable-text="node.kong_api_key" onbeforesave="updateNode(node)">{{node.kong_api_key || 'N/A'}}</a>
+                    <a  ng-if="user.hasPermission('connections','update')" editable-text="node.kong_api_key" onbeforesave="updateNode(node)">{{node.kong_api_key || 'N/A'}}</a>
+                    <a  ng-if="!user.hasPermission('connections','update')">***</a>
                 </td>
                 <td>
                     <a href="#"
